@@ -21,7 +21,7 @@ Function.prototype.resend = function(message) {
 
 // Resends messages to all of the attached objects, allows a basic level of routing
 Hub = function(method) {
-	var message = Array.prototype.slice.apply(arguments,[0])
+	var message = arguments.list()
 	switch (method) {
 	case 'subscribe':
 		var selector = message[1]

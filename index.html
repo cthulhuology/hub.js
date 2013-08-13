@@ -3,6 +3,7 @@
 <head><title>Test Page</title></head>
 <script src="Hub.js"></script>
 <script src="Mouse.js"></script>
+<script src="Draggable.js"></script>
 <style>
 div { 
 	position: absolute;
@@ -20,34 +21,10 @@ div {
 </style>
 <body>
 <div id="test">This is a test</div>
+<div id="test2">This is a different test div</div>
 </body>
 <script>
-Div = function(method,x,y,button) {
-	var div = document.querySelector("#test")
-	switch(method) {
-	case 'down':
-		if  ( x < div.offsetLeft || x > (div.offsetLeft + div.offsetWidth) || y < div.offsetTop || y > (div.offsetTop + div.offsetHeight)) return;
-		div.dx = x - div.offsetLeft
-		div.dy = y - div.offsetTop
-		Hub('subscribe','move',this)
-		Hub('subscribe','up',this)
-		Hub('unsubscribe','down',this)
-		return this
-	case 'move':
-		div.style.left = (x - div.dx) + 'px'
-		div.style.top = (y - div.dy) + 'px'
-		return this;
-	case 'up':
-		Hub('subscribe','down',this)	
-		Hub('unsubscribe','move',this)	
-		Hub('unsubscribe','up',this)	
-		return this
-	default:
-		return this
-	}
-		
-}
-Hub('subscribe','down',Div)
-
+Draggable(document.querySelector('#test'))
+Draggable(document.querySelector('#test2'))
 </script>
 </html>
