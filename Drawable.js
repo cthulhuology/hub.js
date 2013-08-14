@@ -34,8 +34,6 @@ var onFrame = (function(){
 	};
 })();
 
-console.log(onFrame)
-
 function render() {
 	Hub('draw')
 	onFrame(render)

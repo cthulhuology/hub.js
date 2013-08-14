@@ -25,7 +25,6 @@ Menu = function(target,actions) {
 		case 'down':
 			if (!target.on(x,y)) return;
 			if (button != 2) return;
-			console.log("menu")
 			popup.x = popup.style.left = x
 			popup.y = popup.style.top = y
 			popup.style.visibility = 'visible'

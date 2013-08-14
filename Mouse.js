@@ -17,7 +17,6 @@ Mouse = function(e) {
 		case 'mousedown':
 			Hub('down', e.clientX, e.clientY, e.button)
 			Mouse.down = true
-			console.log(e.button)
 			break
 		case 'mousemove': 
 			Hub('move', e.clientX, e.clientY)
