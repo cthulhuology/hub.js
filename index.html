@@ -21,10 +21,30 @@ div {
 	user-select: none;
 	padding: 10;
 }
+
+.menu {
+	border: 1px solid black;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.menuItem {
+	display: block;
+	background-color: lightgray;
+	text-decoration: none;
+	padding: 10px;
+	margin: 0px;
+}
+
+.menuItem:hover {
+	background-color: darkgray;
+}
+
 </style>
 <body>
 <div id="test">Drag me around</div>
-<div id="test2">Click the Buttons above to Move me</div>
+<div id="test2">Click the Buttons or Drag Me!</div>
 <div id="test3">Now you see me</div>
 <div id="test4">Menu</div>
 <button onclick="Pos.send('moveTo',200,200)">200px</button>
@@ -40,7 +60,7 @@ Draggable(div1)
 Pos1 = Positionable(div1).send('moveTo',100,100)	// base location
 Drawable(div1).send('show')
 div1.render = function() {	// a render loop to return to original position over 6 seconds
-	if (div1.on(Mouse.x,Mouse.y)) return;
+	if (div1.on(Mouse.x,Mouse.y) && Mouse.down) return;
 	var dx = (100 - div1.offsetLeft) / 6
 	var dy = (100 - div1.offsetTop) / 6
 	Pos1.send('moveBy',dx,dy)
@@ -60,6 +80,8 @@ Draw = Drawable(div3)	 // hidden by default
 // Div4
 var div4 = document.querySelector('#test4')
 Positionable(div4).send('moveTo',500,100)
-Menu(div4)
+Menu(div4, [['Hide', Draw, ['hide']], ['Show', Draw, ['show']]])
+
+
 </script>
 </html>
