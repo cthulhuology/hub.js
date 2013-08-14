@@ -5,6 +5,7 @@
 <script src="Mouse.js"></script>
 <script src="Draggable.js"></script>
 <script src="Positionable.js"></script>
+<script src="Drawable.js"></script>
 <script src="Menu.js"></script>
 <style>
 div { 
@@ -24,17 +25,33 @@ div {
 <body>
 <div id="test">This is a test</div>
 <div id="test2">This is a different test div</div>
+<div id="test3">Now you see me</div>
+<div id="test4">Menu</div>
 <button onclick="Pos.send('moveTo',200,200)">200px</button>
 <button onclick="Pos.send('moveTo',400,200)">400px</button>
 <button onclick="Pos.send('moveTo',600,200)">600px</button>
+<button onclick="Draw.send('show')">Show</button>
+<button onclick="Draw.send('hide')">Hide</button>
 </body>
 <script>
+// Div1 draggable
 var div1 = document.querySelector('#test')
-var div2 = document.querySelector('#test2')
 Draggable(div1)
+
+// Div2 positionable + draggable
+var div2 = document.querySelector('#test2')
 Draggable(div2)
-var Pos = Positionable(div2)
+Pos = Positionable(div2)
 Pos.send('moveTo',200,200)
-Menu(document.querySelector('#test2'))
+
+// Div3 drawable
+var div3 = document.querySelector('#test3')
+Positionable(div3).send('moveTo',300,100)
+Draw = Drawable(div3).send('show')
+
+// Div4
+var div4 = document.querySelector('#test4')
+Positionable(div4).send('moveTo',500,100)
+Menu(div4)
 </script>
 </html>

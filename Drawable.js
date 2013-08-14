@@ -1,9 +1,43 @@
-
+// Drawable controls the visibility of the element on the page
 
 Drawable = function(element) {
-	var drawable = function(method,target) {
-
-
+	var drawable = function(method) {
+		switch(method) {
+		case 'show':
+			element.style.display = 'block'
+			Hub('subscribe','draw',this)
+			return this
+		case 'hide':
+			element.style.display = 'none'
+			Hub('unsubscribe','draw',this)
+			return this
+		case 'draw':
+			console.log('drawing')
+			return this
+		default:
+			// ignore
+			return this
+		}
 	}
 
+	return drawable
+}	
+
+var onFrame = (function(){
+	return window.requestAnimationFrame	||
+	window.webkitRequestAnimationFrame	||
+	window.mozRequestAnimationFrame		||
+	function( callback ){
+		window.setTimeout(callback, 1000 / 60);
+	};
+})();
+
+console.log(onFrame)
+
+function render() {
+	Hub('draw')
+	onFrame(render)
 }
+
+onFrame(render)
+
