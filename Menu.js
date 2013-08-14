@@ -32,10 +32,9 @@ Menu = function(target,actions) {
 			return this
 		case 'up':
 			popup.style.visibility = 'hidden'
-			console.log(popup)
+			if (x < popup.x || x > (popup.x + popup.offsetWidth) || y < popup.y || y > (popup.y + popup.offsetHeight)) return this;
 			var item = actions[Math.floor(( y - popup.y) / (popup.offsetHeight/actions.length))]
-			console.log("Sending ", item[1], "message", item[2])
-			item[1].resend(item[2])
+			if (item) item[1].resend(item[2])
 			return this
 		default:
 			return this
