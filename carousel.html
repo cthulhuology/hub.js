@@ -1,0 +1,80 @@
+<!HTML>
+<html>
+<head><title>Test Page</title>
+<script src="Hub.js"></script>
+<script src="Mouse.js"></script>
+<script src="Positionable.js"></script>
+<script src="Drawable.js"></script>
+<script src="Menu.js"></script>
+<script src="Carousel.js"></script>
+<style>
+#carousel { 
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	height: 80%;
+	border: 1px solid black;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding: 10;
+	overflow: hidden;
+	list-style: none;
+}
+
+li { 
+	position: absolute;
+}
+
+.menu {
+	border: 1px solid black;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.menuItem {
+	display: block;
+	background-color: lightgray;
+	text-decoration: none;
+	padding: 10px;
+	margin: 0px;
+}
+
+.menuItem:hover {
+	background-color: darkgray;
+}
+
+</style>
+</head>
+<body>
+<ul id="carousel"></ul>
+<script>
+// Div1 draggable + drawable + positionable
+var carousel = document.querySelector('#carousel')
+var img1 = new Image()
+img1.src = "/Library/Application Support/Apple/iChat Icons/Flags/Canada.png" 
+var img2 = new Image()
+img2.src = "/Library/Application Support/Apple/iChat Icons/Flags/Denmark.png" 
+var img3 = new Image()
+img3.src = "/Library/Application Support/Apple/iChat Icons/Flags/Greece.png" 
+var img4 = new Image()
+img4.src = "/Library/Application Support/Apple/iChat Icons/Flags/Brazil.png" 
+var img5 = new Image()
+img5.src = "/Library/Application Support/Apple/iChat Icons/Flags/Argentina.png" 
+var img6 = new Image()
+img6.src = "/Library/Application Support/Apple/iChat Icons/Flags/Germany.png" 
+var img7 = new Image()
+img7.src = "/Library/Application Support/Apple/iChat Icons/Flags/Austria.png" 
+var img8 = new Image()
+img8.src = "/Library/Application Support/Apple/iChat Icons/Flags/UK.png" 
+
+var car = Carousel(carousel, [ img1,img2,img3,img4,img5,img6,img7,img8 ])
+
+</script>
+</body>
+</html>
