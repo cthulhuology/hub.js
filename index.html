@@ -74,13 +74,18 @@ Pos.send('moveTo',200,200)
 
 // Div3 drawable
 var div3 = document.querySelector('#test3')
-Positionable(div3).send('moveTo',300,100)
+Pos3 = Positionable(div3).send('moveTo',300,100)
 Draw = Drawable(div3)	 // hidden by default
 
 // Div4
 var div4 = document.querySelector('#test4')
 Positionable(div4).send('moveTo',500,100)
-Menu(div4, [['Hide', Draw, ['hide']], ['Show', Draw, ['show']]])
+Menu(div4, [
+	['Show', Draw, ['show']], 
+	['Hide', Draw, ['hide']], 
+	['Up', Pos3, [ 'moveBy', 0, -50]],
+	['Down',Pos3, [ 'moveBy', 0,50]]
+])
 
 
 </script>
