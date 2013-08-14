@@ -1,6 +1,7 @@
 // Drawable controls the visibility of the element on the page
 
 Drawable = function(element) {
+	element.style.display = 'none'
 	var drawable = function(method) {
 		switch(method) {
 		case 'show':
@@ -12,7 +13,8 @@ Drawable = function(element) {
 			Hub('unsubscribe','draw',this)
 			return this
 		case 'draw':
-			console.log('drawing')
+			if (typeof(element.render) != 'function') return;
+			element.render()
 			return this
 		default:
 			// ignore

@@ -23,8 +23,8 @@ div {
 }
 </style>
 <body>
-<div id="test">This is a test</div>
-<div id="test2">This is a different test div</div>
+<div id="test">Drag me around</div>
+<div id="test2">Click the Buttons above to Move me</div>
 <div id="test3">Now you see me</div>
 <div id="test4">Menu</div>
 <button onclick="Pos.send('moveTo',200,200)">200px</button>
@@ -34,9 +34,17 @@ div {
 <button onclick="Draw.send('hide')">Hide</button>
 </body>
 <script>
-// Div1 draggable
+// Div1 draggable + drawable + positionable
 var div1 = document.querySelector('#test')
 Draggable(div1)
+Pos1 = Positionable(div1).send('moveTo',100,100)	// base location
+Drawable(div1).send('show')
+div1.render = function() {	// a render loop to return to original position over 6 seconds
+	if (div1.on(Mouse.x,Mouse.y)) return;
+	var dx = (100 - div1.offsetLeft) / 6
+	var dy = (100 - div1.offsetTop) / 6
+	Pos1.send('moveBy',dx,dy)
+}
 
 // Div2 positionable + draggable
 var div2 = document.querySelector('#test2')
@@ -47,7 +55,7 @@ Pos.send('moveTo',200,200)
 // Div3 drawable
 var div3 = document.querySelector('#test3')
 Positionable(div3).send('moveTo',300,100)
-Draw = Drawable(div3).send('show')
+Draw = Drawable(div3)	 // hidden by default
 
 // Div4
 var div4 = document.querySelector('#test4')

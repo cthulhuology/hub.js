@@ -11,6 +11,8 @@ HTMLElement.prototype.on = function(x,y) {
 Mouse = function(e) {
 	e.preventDefault()
 	e.stopPropagation()
+	Mouse.x = e.clientX
+	Mouse.y = e.clientY
 	switch(e.type) {
 		case 'mousedown':
 			Hub('down', e.clientX, e.clientY, e.button)
