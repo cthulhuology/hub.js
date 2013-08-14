@@ -4,6 +4,8 @@
 <script src="Hub.js"></script>
 <script src="Mouse.js"></script>
 <script src="Draggable.js"></script>
+<script src="Positionable.js"></script>
+<script src="Menu.js"></script>
 <style>
 div { 
 	position: absolute;
@@ -22,9 +24,17 @@ div {
 <body>
 <div id="test">This is a test</div>
 <div id="test2">This is a different test div</div>
+<button onclick="Pos.send('moveTo',200,200)">200px</button>
+<button onclick="Pos.send('moveTo',400,200)">400px</button>
+<button onclick="Pos.send('moveTo',600,200)">600px</button>
 </body>
 <script>
-Draggable(document.querySelector('#test'))
-Draggable(document.querySelector('#test2'))
+var div1 = document.querySelector('#test')
+var div2 = document.querySelector('#test2')
+Draggable(div1)
+Draggable(div2)
+var Pos = Positionable(div2)
+Pos.send('moveTo',200,200)
+Menu(document.querySelector('#test2'))
 </script>
 </html>

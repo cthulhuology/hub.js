@@ -2,7 +2,7 @@ Draggable = function(element) {
 	var draggable =  function(method,x,y,button) {
 		switch(method) {
 		case 'down':
-			if  ( x < element.offsetLeft || x > (element.offsetLeft + element.offsetWidth) || y < element.offsetTop || y > (element.offsetTop + element.offsetHeight)) return;
+			if (! element.on(x,y)) return this
 			element.dx = x - element.offsetLeft
 			element.dy = y - element.offsetTop
 			Hub('subscribe','move',this)
